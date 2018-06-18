@@ -198,7 +198,7 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
@@ -209,14 +209,10 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/instalocate_logo.png" class="logo" alt="Instalocate logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#partners-api-introduction" class="toc-h1 toc-link" data-title="partners-api-introduction">Partners API Introduction</a>
@@ -230,7 +226,7 @@
               </ul>
           </li>
           <li>
-            <a href="#partners" class="toc-h1 toc-link" data-title="partners">Partners</a>
+            <a href="#partners-admin" class="toc-h1 toc-link" data-title="partners-admin">Partners Admin</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#register-a-new-partner" class="toc-h2 toc-link" data-title="register-a-new-partner">Register a new partner</a>
@@ -265,7 +261,7 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://www.instalocate.com'>Instalocate</a></li>
+            <li><a href='https://www.instalocate.com'>(c) 2018 Instalocate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -288,7 +284,7 @@ URL: <code>https://partners-prod-api.instalocate.com/v1</code></p>
 <h3 id='test-mode'>Test Mode</h3>
 <p>This api should be used for all the testing
 URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
-<h1 id='partners'>Partners</h1>
+<h1 id='partners-admin'>Partners Admin</h1>
 <p>To create, update and delete a partner.</p>
 
 <p>API End Point : <code>/partners</code></p>
@@ -360,7 +356,7 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 </tbody></table>
 
 <blockquote>
-<p>Example for registering a new partner:</p>
+<p>Example for getting partner information:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
   --url https://partners-test-api.instalocate.com/v1/partners <span class="se">\</span>
