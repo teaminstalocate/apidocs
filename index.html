@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Instalocate Partners API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,22 +219,44 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#instalocate-api-introduction" class="toc-h1 toc-link" data-title="instalocate-api-introduction">Instalocate API Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="kittens">Kittens</a>
+            <a href="#partners-api-introduction" class="toc-h1 toc-link" data-title="partners-api-introduction">Partners API Introduction</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="get-all-kittens">Get All Kittens</a>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="authentication">Authentication</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="get-a-specific-kitten">Get a Specific Kitten</a>
+                    <a href="#two-types-of-apis" class="toc-h2 toc-link" data-title="two-types-of-apis">Two types of APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#partners" class="toc-h1 toc-link" data-title="partners">Partners</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register-a-new-partner" class="toc-h2 toc-link" data-title="register-a-new-partner">Register a new partner</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="delete-a-specific-kitten">Delete a Specific Kitten</a>
+                    <a href="#get-partner-information" class="toc-h2 toc-link" data-title="get-partner-information">Get partner information</a>
+                  </li>
+                  <li>
+                    <a href="#update-partner-information" class="toc-h2 toc-link" data-title="update-partner-information">Update partner information</a>
+                  </li>
+                  <li>
+                    <a href="#delete-partner" class="toc-h2 toc-link" data-title="delete-partner">Delete partner</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#bookings" class="toc-h1 toc-link" data-title="bookings">Bookings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-booking" class="toc-h2 toc-link" data-title="create-a-new-booking">Create a new booking</a>
+                  </li>
+                  <li>
+                    <a href="#booking-39-s-latest-status" class="toc-h2 toc-link" data-title="booking-s-latest-status">Booking's latest status</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-booking" class="toc-h2 toc-link" data-title="delete-a-booking">Delete a booking</a>
                   </li>
               </ul>
           </li>
@@ -246,193 +265,317 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://www.instalocate.com'>Instalocate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='instalocate-api-introduction'>Instalocate API Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='partners-api-introduction'>Partners API Introduction</h1>
+<p>Welcome to Instalocate Partners API!. </p>
+<h2 id='authentication'>Authentication</h2>
+<p>In order to use this API, you are required to have two keys: </p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<ul>
+<li>api_key</li>
+<li>partner_id</li>
+</ul>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Only with these keys, you can make the API calls using the documentation below. Please contact help@instalocate.com if you want to use Instalocate API.</p>
+<h2 id='two-types-of-apis'>Two types of APIs</h2><h3 id='production'>Production</h3>
+<p>All the production calls should be made to this API url
+URL: <code>https://partners-prod-api.instalocate.com/v1</code></p>
+<h3 id='test-mode'>Test Mode</h3>
+<p>This api should be used for all the testing
+URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
+<h1 id='partners'>Partners</h1>
+<p>To create, update and delete a partner.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>API End Point : <code>/partners</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>Examples: </p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<ul>
+<li>Production: <code>https://partners-prod-api.instalocate.com/v1/partners</code></li>
+<li>Test: <code>https://partners-test-api.instalocate.com/v1/partners</code></li>
+</ul>
+<h3 id='register-a-new-partner'>Register a new partner</h3>
+<p>Register a new partner using <code>mode=register_partner</code></p>
+<h4 id='post-parameters'>Post Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Value</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>mode</td>
+<td><code>register_partner</code></td>
+<td>This is required.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>params</td>
+<td>dictionary of values</td>
+<td>Specify meta data like name, webhook etc.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example for registering a new partner:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/partners <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "mode": "register_partner",
+        "params": {
+            "meta_data": {
+            "name": "Partner ABC",    
+            "webhook": "https://www.travel.com/api_webhook"
+        }
+    }
+}'</span>
+</code></pre><h3 id='get-partner-information'>Get partner information</h3>
+<p>Get the saved partner information <code>mode=get_partner_info</code></p>
+<h4 id='post-parameters-2'>Post Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Value</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>mode</td>
+<td><code>get_partner_info</code></td>
+<td>This is required.</td>
+</tr>
+<tr>
+<td>params</td>
+<td>dictionary containing partner_id</td>
+<td>Should contain partner_id</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example for registering a new partner:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/partners <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "mode": "get_partner_info",
+        "params": {
+            "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
+    }
+}'</span>
+</code></pre><h3 id='update-partner-information'>Update partner information</h3>
+<p>Update the partner information </p>
+<h4 id='post-parameters-3'>Post Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Value</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>mode</td>
+<td><code>update_partner</code></td>
+<td>This is required.</td>
+</tr>
+<tr>
+<td>params</td>
+<td>dictionary of values</td>
+<td>Should contain partner_id and updated values in <code>meta_data</code> field</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+
+<blockquote>
+<p>Example for updating an existing partner information:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/partners <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "mode": "update_partner",
+        "params": {
+            "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c",
+            "meta_data": {
+                "webhook": "https://www.travel.com/webhook"
+            }
+    }
+}'</span>
+</code></pre><h3 id='delete-partner'>Delete partner</h3>
+<p>Delete a partner</p>
+<h4 id='post-parameters-4'>Post Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td><code>delete_partner</code></td>
+<td>This is required.</td>
+</tr>
+<tr>
+<td>params</td>
+<td>dictionary of values</td>
+<td>Should contain partner_id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example for deleting a partner</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/partners <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "mode": "delete_partner",
+        "params": {
+            "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c",
+    }
+}'</span>
+</code></pre><h1 id='bookings'>Bookings</h1>
+<p>This API is used to create booking information.</p>
+
+<p>API End Point : <code>/bookings</code></p>
+
+<p>Examples: </p>
+
+<ul>
+<li>Production: <code>https://partners-prod-api.instalocate.com/v1/bookings</code></li>
+<li>Test: <code>https://partners-test-api.instalocate.com/v1/bookings</code></li>
+</ul>
+<h3 id='create-a-new-booking'>Create a new booking</h3>
+<p>Create a new booking using <code>mode=add_bookings</code></p>
+<h4 id='post-parameters'>Post Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td><code>add_bookings</code></td>
+<td>This is required.</td>
+</tr>
+<tr>
+<td>params</td>
+<td>dictionary of values</td>
+<td>Specify partner_booking_uid, and array of flights information</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example for creating a new booking:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/bookings <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+        {
+    "mode": "add_bookings",
+    "params": {
+        "partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
+        "partner_booking_uid": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1",
+        "flights": [ 
+                {
+                    "airline_code": "BA",
+                    "flight_number": "10",
+                    "departure_date": "2018-11-11",
+                    "source_airport": "DEL",
+                    "destination_airport": "LHR"
+                    }
+            ]
+        }
+    }
+}'</span>
+</code></pre><h3 id='booking-39-s-latest-status'>Booking&#39;s latest status</h3>
+<p>Get the latest status of an existing booking using <code>mode=latest_status_bookings</code></p>
+<h4 id='post-parameters-2'>Post Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td><code>latest_status_bookings</code></td>
+<td>This is required.</td>
+</tr>
+<tr>
+<td>params</td>
+<td>dictionary of values</td>
+<td>Specify instalocate_booking_id.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example for getting the latest status of a booking:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/bookings <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+        {
+    "mode": "add_bookings",
+    "params": {
+        "partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
+        "instalocate_booking_uids": ["c494a92d-09a9-4806-9223-ec7bae4acd28"],
+    }
+}'</span>
+</code></pre><h3 id='delete-a-booking'>Delete a booking</h3>
+<p>Delete an existing booking using <code>mode=delete_bookings</code></p>
+<h4 id='post-parameters-3'>Post Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td><code>delete_bookings</code></td>
+<td>This is required.</td>
+</tr>
+<tr>
+<td>params</td>
+<td>dictionary of values</td>
+<td>Specify instalocate_booking_id.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Delete an existing booking:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://partners-test-api.instalocate.com/v1/bookings <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+    "mode": "delete_bookings",
+        "params": {
+            "instalocate_booking_uid": "c494a92d-09a9-4806-9223-ec7bae4acd28"
+    }
+}'</span>
+</code></pre><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
@@ -495,9 +638,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
