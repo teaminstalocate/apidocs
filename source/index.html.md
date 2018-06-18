@@ -5,14 +5,14 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://www.instalocate.com'>Instalocate</a>
+  - <a href='https://www.instalocate.com'>(c) 2018 Instalocate</a>
 
 includes:
   - partners
   - bookings
   - errors
 
-search: true
+search: false
 ---
 
 # Partners API Introduction
