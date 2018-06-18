@@ -17,7 +17,8 @@ search: true
 
 # Partners API Introduction
 
-Welcome to Instalocate Partners API!. 
+Welcome to Instalocate Partners API!. This is an initial draft of the documentation
+
 
 ## Authentication
 
