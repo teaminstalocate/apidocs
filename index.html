@@ -252,12 +252,12 @@
                     <a href="#booking-39-s-latest-status" class="toc-h2 toc-link" data-title="booking-s-latest-status">Booking's latest status</a>
                   </li>
                   <li>
+                    <a href="#update-a-booking" class="toc-h2 toc-link" data-title="update-a-booking">Update a booking</a>
+                  </li>
+                  <li>
                     <a href="#delete-a-booking" class="toc-h2 toc-link" data-title="delete-a-booking">Delete a booking</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
         <ul class="toc-footer">
@@ -303,17 +303,39 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Required?</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
+<td><code>mode</code></td>
 <td><code>register_partner</code></td>
-<td>This is required.</td>
+<td>This mode is used for adding new partners</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary of values</td>
-<td>Specify meta data like name, webhook etc.</td>
+<td><code>params</code></td>
+<td>Dictionary of values</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='params-values'><code>params</code> values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name of the partner</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>webhook</code></td>
+<td>Webhook for API callbacks. Ignore this if callbacks are not required. You can update this later on</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -327,12 +349,9 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
   --data <span class="s1">'{
     "mode": "register_partner",
         "params": {
-            "meta_data": {
             "name": "Partner ABC",    
-            "webhook": "https://www.travel.com/api_webhook"
-        }
-    }
-}'</span>
+            "webhook": "https://www.travel.com/api_webhook"     }
+    }'</span>
 </code></pre><h3 id='get-partner-information'>Get partner information</h3>
 <p>Get the saved partner information <code>mode=get_partner_info</code></p>
 <h4 id='post-parameters-2'>Post Parameters</h4>
@@ -341,17 +360,34 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Required?</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
+<td><code>mode</code></td>
 <td><code>get_partner_info</code></td>
-<td>This is required.</td>
+<td>This mode is used to get partner information</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary containing partner_id</td>
-<td>Should contain partner_id</td>
+<td><code>params</code></td>
+<td>Dictionary of params values</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='params-values-2'><code>params</code> values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>partner_id</code></td>
+<td>Partner id</td>
+<td>Required</td>
 </tr>
 </tbody></table>
 
@@ -364,8 +400,8 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
   --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
   --data <span class="s1">'{
     "mode": "get_partner_info",
-        "params": {
-            "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
+    "params": {
+        "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
     }
 }'</span>
 </code></pre><h3 id='update-partner-information'>Update partner information</h3>
@@ -376,17 +412,58 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Required?</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
-<td><code>update_partner</code></td>
-<td>This is required.</td>
+<td><code>mode</code></td>
+<td><code>get_partner_info</code></td>
+<td>This mode is used to get partner information</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary of values</td>
-<td>Should contain partner_id and updated values in <code>meta_data</code> field</td>
+<td><code>params</code></td>
+<td>Dictionary of partner values</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='params-values-3'><code>params</code> values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>partner_id</code></td>
+<td>Partner id</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>meta_data</code></td>
+<td>Dictionary containing values</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='meta_data-values'><code>meta_data</code> values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Partner Name</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>webhook</code></td>
+<td>API Webhook url</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -414,17 +491,34 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Required?</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
+<td><code>mode</code></td>
 <td><code>delete_partner</code></td>
-<td>This is required.</td>
+<td>This mode is used to delete a partner</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary of values</td>
-<td>Should contain partner_id</td>
+<td><code>params</code></td>
+<td>Dictionary of partner values</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='params-values-4'><code>params</code> values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>partner_id</code></td>
+<td>Partner id</td>
+<td>Required</td>
 </tr>
 </tbody></table>
 
@@ -460,7 +554,7 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
-<th>Description</th>
+<th>Required?</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -496,7 +590,7 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 </tr>
 <tr>
 <td>flights</td>
-<td>This is an array of flights of a given booking. See below for the individual flight structure</td>
+<td>An array of flights of a given booking. See below for the individual flight structure</td>
 <td>Required</td>
 </tr>
 </tbody></table>
@@ -625,7 +719,9 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
         "partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1"
     }
 }'</span>
-</code></pre><h3 id='delete-a-booking'>Delete a booking</h3>
+</code></pre><h3 id='update-a-booking'>Update a booking</h3>
+<p>You can change the flight information for a given booking id. In order to update a given booking id, first delete the existing booking and create a new booking with the updated flight numbers. </p>
+<h3 id='delete-a-booking'>Delete a booking</h3>
 <p>Delete an existing booking using <code>mode=delete_bookings</code></p>
 <h4 id='post-parameters-3'>Post Parameters</h4>
 <table><thead>
@@ -683,65 +779,7 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
         "partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1"
     }
 }'</span>
-</code></pre><h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
