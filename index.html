@@ -460,17 +460,83 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
-<td><code>add_bookings</code></td>
-<td>This is required.</td>
+<td><code>mode</code></td>
+<td><code>add_booking</code></td>
+<td>This mode is used for adding new bookings.</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary of values</td>
-<td>Specify partner_booking_uid, and array of flights information</td>
+<td><code>params</code></td>
+<td>Dictionary of booking values</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='booking-value'>Booking Value</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>partner_id</code></td>
+<td>This partner id is given at the time of giving API access</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>partner_booking_unique_id</code></td>
+<td>This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>flights</td>
+<td>This is an array of flights of a given booking. See below for the individual flight structure</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='individual-flight'>Individual Flight</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>airline_code</code></td>
+<td>Airline Code e.g. BA</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>flight_number</code></td>
+<td>Flight number: 123, 123A (it can contain alphabets).</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>departure_date</code></td>
+<td>Date of departure in YYYY-MM-DD format. Example: 2018-05-18</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>source_airport</code></td>
+<td>Source Airport Code (e.g. LHR)</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>destination_airport</code></td>
+<td>Source Airport Code (e.g. JFK)</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>partner_flight_unique_id</code></td>
+<td>To uniquely identify a flight. This value will be passed back in the API response.</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -483,10 +549,10 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
   --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
   --data <span class="s1">'{
         {
-    "mode": "add_bookings",
+    "mode": "add_booking",
     "params": {
         "partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
-        "partner_booking_uid": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1",
+        "partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1",
         "flights": [ 
                 {
                     "airline_code": "BA",
@@ -494,7 +560,8 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
                     "departure_date": "2018-11-11",
                     "source_airport": "DEL",
                     "destination_airport": "LHR"
-                    }
+                    "partner_flight_unique_id": "123123"
+                }
             ]
         }
     }
@@ -507,17 +574,39 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
-<td><code>latest_status_bookings</code></td>
-<td>This is required.</td>
+<td><code>mode</code></td>
+<td><code>latest_status_booking</code></td>
+<td>This mode is used to get the latest information</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary of values</td>
-<td>Specify instalocate_booking_id.</td>
+<td><code>params</code></td>
+<td>Dictionary of partner and booking unique ids</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='partner-and-booking-unique-ids-dictionary'>Partner and Booking Unique IDs Dictionary</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>partner_id</code></td>
+<td>This partner id is given at the time of giving API access</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>partner_booking_unique_id</code></td>
+<td>This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value</td>
+<td>Required</td>
 </tr>
 </tbody></table>
 
@@ -530,10 +619,10 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
   --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
   --data <span class="s1">'{
         {
-    "mode": "add_bookings",
+    "mode": "latest_status_booking",
     "params": {
         "partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
-        "instalocate_booking_uids": ["c494a92d-09a9-4806-9223-ec7bae4acd28"],
+        "partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1"
     }
 }'</span>
 </code></pre><h3 id='delete-a-booking'>Delete a booking</h3>
@@ -544,17 +633,39 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
 <th>Parameter</th>
 <th>Value</th>
 <th>Description</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>mode</td>
-<td><code>delete_bookings</code></td>
-<td>This is required.</td>
+<td><code>mode</code></td>
+<td><code>delete_booking</code></td>
+<td>This mode is used to delete a given booking</td>
+<td>Required</td>
 </tr>
 <tr>
-<td>params</td>
-<td>dictionary of values</td>
-<td>Specify instalocate_booking_id.</td>
+<td><code>params</code></td>
+<td>Dictionary of partner and booking unique ids</td>
+<td>See below for the details</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h4 id='partner-and-booking-unique-ids-dictionary-2'>Partner and Booking Unique IDs Dictionary</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>partner_id</code></td>
+<td>This partner id is given at the time of giving API access</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>partner_booking_unique_id</code></td>
+<td>This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value</td>
+<td>Required</td>
 </tr>
 </tbody></table>
 
@@ -566,9 +677,10 @@ URL: <code>https://partners-test-api.instalocate.com/v1</code></p>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG'</span> <span class="se">\</span>
   --data <span class="s1">'{
-    "mode": "delete_bookings",
-        "params": {
-            "instalocate_booking_uid": "c494a92d-09a9-4806-9223-ec7bae4acd28"
+    "mode": "delete_booking",
+    "params": {
+        "partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
+        "partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1"
     }
 }'</span>
 </code></pre><h1 id='errors'>Errors</h1>
