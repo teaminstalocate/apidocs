@@ -16,10 +16,29 @@ Create a new booking using ```mode=add_bookings```
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `add_bookings` | This is required.
-params | dictionary of values | Specify partner_booking_uid, and array of flights information
+Parameter | Value | Description | Description
+--------- | ------- | ----------- | -----------
+`mode` | `add_booking` | This mode is used for adding new bookings. | Required
+`params` | Dictionary of booking values | See below for the details | Required
+
+#### Booking Value
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`partner_id` | This partner id is given at the time of giving API access  | Required
+`partner_booking_unique_id` | This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value | Required
+flights | This is an array of flights of a given booking. See below for the individual flight structure | Required
+
+#### Individual Flight
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`airline_code` | Airline Code e.g. BA | Required
+`flight_number` | Flight number: 123, 123A (it can contain alphabets). | Required
+`departure_date` | Date of departure in YYYY-MM-DD format. Example: 2018-05-18 | Required
+`source_airport` | Source Airport Code (e.g. LHR) | Required
+`destination_airport` | Source Airport Code (e.g. JFK) | Required
+`partner_flight_unique_id` | To uniquely identify a flight. This value will be passed back in the API response.  | Optional
 
 > Example for creating a new booking:
 
@@ -30,10 +49,10 @@ curl --request POST \
   --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
   --data '{
 		{
-	"mode": "add_bookings",
+	"mode": "add_booking",
 	"params": {
 		"partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
-		"partner_booking_uid": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1",
+		"partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1",
 		"flights": [ 
 				{
 					"airline_code": "BA",
@@ -41,7 +60,8 @@ curl --request POST \
 	            	"departure_date": "2018-11-11",
 	            	"source_airport": "DEL",
 	            	"destination_airport": "LHR"
-					}
+	            	"partner_flight_unique_id": "123123"
+				}
 			]
 		}
 	}
@@ -54,10 +74,17 @@ Get the latest status of an existing booking using ```mode=latest_status_booking
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `latest_status_bookings` | This is required.
-params | dictionary of values | Specify instalocate_booking_id.
+Parameter | Value | Description | Description
+--------- | ------- | ----------- | -----------
+`mode` | `latest_status_booking` | This mode is used to get the latest information | Required
+`params` | Dictionary of partner and booking unique ids | See below for the details | Required
+
+#### Partner and Booking Unique IDs Dictionary
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`partner_id` | This partner id is given at the time of giving API access  | Required
+`partner_booking_unique_id` | This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value | Required
 
 > Example for getting the latest status of a booking:
 
@@ -68,10 +95,10 @@ curl --request POST \
   --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
   --data '{
 		{
-	"mode": "add_bookings",
+	"mode": "latest_status_booking",
 	"params": {
 		"partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
-		"instalocate_booking_uids": ["c494a92d-09a9-4806-9223-ec7bae4acd28"],
+		"partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1"
 	}
 }'
 ```
@@ -82,10 +109,18 @@ Delete an existing booking using ```mode=delete_bookings```
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `delete_bookings` | This is required.
-params | dictionary of values | Specify instalocate_booking_id.
+Parameter | Value | Description | Description
+--------- | ------- | ----------- | -----------
+`mode` | `delete_booking` | This mode is used to delete a given booking | Required
+`params` | Dictionary of partner and booking unique ids | See below for the details | Required
+
+#### Partner and Booking Unique IDs Dictionary
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`partner_id` | This partner id is given at the time of giving API access  | Required
+`partner_booking_unique_id` | This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value | Required
+
 
 > Delete an existing booking:
 
@@ -95,9 +130,10 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
   --data '{
-	"mode": "delete_bookings",
-		"params": {
-			"instalocate_booking_uid": "c494a92d-09a9-4806-9223-ec7bae4acd28"
+	"mode": "delete_booking",
+	"params": {
+		"partner_id": "d4e1d8e1-08ea-4cc0-8b3b-bf52cb8265c1",
+		"partner_booking_unique_id": "d1e1d8e3-08ea-4cc0-8b3b-bf52cb8265c1"
 	}
 }'
 ```
