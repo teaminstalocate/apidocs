@@ -10,7 +10,6 @@ toc_footers:
 includes:
   - partners
   - bookings
-  - errors
 
 search: false
 ---

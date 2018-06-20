@@ -16,10 +16,17 @@ Register a new partner using ```mode=register_partner```
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `register_partner` | This is required.
-params | dictionary of values | Specify meta data like name, webhook etc.
+Parameter | Value | Description | Required?
+--------- | ------- | ----------- | -----------
+`mode` | `register_partner ` | This mode is used for adding new partners | Required
+`params` | Dictionary of values | See below for the details | Required
+
+#### `params` values
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`name ` | Name of the partner  | Required
+`webhook ` | Webhook for API callbacks. Ignore this if callbacks are not required. You can update this later on  | Optional
 
 > Example for registering a new partner:
 
@@ -31,14 +38,10 @@ curl --request POST \
   --data '{
 	"mode": "register_partner",
 		"params": {
-			"meta_data": {
 			"name": "Partner ABC",    
-			"webhook": "https://www.travel.com/api_webhook"
-		}
-	}
-}'
+			"webhook": "https://www.travel.com/api_webhook"		}
+	}'
 ```
-
 
 ### Get partner information
 
@@ -46,10 +49,17 @@ Get the saved partner information `mode=get_partner_info`
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `get_partner_info` | This is required.
-params | dictionary containing partner_id | Should contain partner_id
+Parameter | Value | Description | Required?
+--------- | ------- | ----------- | -----------
+`mode` | `get_partner_info ` | This mode is used to get partner information | Required
+`params` | Dictionary of params values | See below for the details | Required
+
+#### `params` values
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`partner_id` | Partner id  | Required
+
 
 > Example for getting partner information:
 
@@ -60,8 +70,8 @@ curl --request POST \
   --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
   --data '{
 	"mode": "get_partner_info",
-		"params": {
-			"partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
+	"params": {
+		"partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
 	}
 }'
 ```
@@ -71,10 +81,25 @@ Update the partner information
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `update_partner` | This is required.
-params | dictionary of values | Should contain partner_id and updated values in `meta_data` field
+Parameter | Value | Description | Required?
+--------- | ------- | ----------- | -----------
+`mode` | `get_partner_info ` | This mode is used to get partner information | Required
+`params` | Dictionary of partner values | See below for the details | Required
+
+#### `params` values
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`partner_id` | Partner id  | Required
+`meta_data` | Dictionary containing values | Required
+
+#### `meta_data` values
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`name` | Partner Name  | Optional
+`webhook` | API Webhook url | Optional
+
 
 > Example for updating an existing partner information:
 
@@ -100,10 +125,17 @@ Delete a partner
 
 #### Post Parameters
 
-Parameter | Value | Description
---------- | ------- | -----------
-mode | `delete_partner` | This is required.
-params | dictionary of values | Should contain partner_id 
+Parameter | Value | Description | Required?
+--------- | ------- | ----------- | -----------
+`mode` | `delete_partner ` | This mode is used to delete a partner | Required
+`params` | Dictionary of partner values | See below for the details | Required
+
+#### `params` values
+
+Parameter |  Description |  Required?
+--------- | ----------- | -----------
+`partner_id` | Partner id  | Required
+
 
 > Example for deleting a partner
 

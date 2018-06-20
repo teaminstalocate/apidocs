@@ -16,7 +16,7 @@ Create a new booking using ```mode=add_bookings```
 
 #### Post Parameters
 
-Parameter | Value | Description | Description
+Parameter | Value | Description | Required?
 --------- | ------- | ----------- | -----------
 `mode` | `add_booking` | This mode is used for adding new bookings. | Required
 `params` | Dictionary of booking values | See below for the details | Required
@@ -27,7 +27,7 @@ Parameter |  Description |  Required?
 --------- | ----------- | -----------
 `partner_id` | This partner id is given at the time of giving API access  | Required
 `partner_booking_unique_id` | This is a unique booking id of the partner. For example: PNR, ticket number. This has to be a unique value | Required
-flights | This is an array of flights of a given booking. See below for the individual flight structure | Required
+flights | An array of flights of a given booking. See below for the individual flight structure | Required
 
 #### Individual Flight
 
@@ -68,7 +68,6 @@ curl --request POST \
 }'
 ```
 
-
 ### Booking's latest status
 Get the latest status of an existing booking using ```mode=latest_status_bookings```
 
@@ -102,6 +101,10 @@ curl --request POST \
 	}
 }'
 ```
+
+### Update a booking
+
+You can change the flight information for a given booking id. In order to update a given booking id, first delete the existing booking and create a new booking with the updated flight numbers. 
 
 ### Delete a booking
 
