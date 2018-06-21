@@ -9,7 +9,7 @@ Examples:
 * Production: ```https://partners-prod-api.instalocate.com/v1/partners```
 * Test: ```https://partners-test-api.instalocate.com/v1/partners```
  
-
+<!--
 ### Register a new partner
 
 Register a new partner using ```mode=register_partner```
@@ -34,14 +34,14 @@ Parameter |  Description |  Required?
 curl --request POST \
   --url https://partners-test-api.instalocate.com/v1/partners \
   --header 'Content-Type: application/json' \
-  --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
+  --header 'x-api-key: D61qO8qcoR4ArQvOCYtauSHQqU24qJv2TvQIBwPi' \
   --data '{
 	"mode": "register_partner",
 		"params": {
 			"name": "Partner ABC",    
 			"webhook": "https://www.travel.com/api_webhook"		}
 	}'
-```
+```-->
 
 ### Get partner information
 
@@ -67,11 +67,11 @@ Parameter |  Description |  Required?
 curl --request POST \
   --url https://partners-test-api.instalocate.com/v1/partners \
   --header 'Content-Type: application/json' \
-  --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
+  --header 'x-api-key: D61qO8qcoR4ArQvOCYtauSHQqU24qJv2TvQIBwPi' \
   --data '{
 	"mode": "get_partner_info",
-	"params": {
-		"partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
+    "params": {
+        "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c"
 	}
 }'
 ```
@@ -83,7 +83,7 @@ Update the partner information
 
 Parameter | Value | Description | Required?
 --------- | ------- | ----------- | -----------
-`mode` | `get_partner_info ` | This mode is used to get partner information | Required
+`mode` | `update_partner ` | This mode is used to get partner information | Required
 `params` | Dictionary of partner values | See below for the details | Required
 
 #### `params` values
@@ -107,18 +107,19 @@ Parameter |  Description |  Required?
 curl --request POST \
   --url https://partners-test-api.instalocate.com/v1/partners \
   --header 'Content-Type: application/json' \
-  --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
+  --header 'x-api-key: D61qO8qcoR4ArQvOCYtauSHQqU24qJv2TvQIBwPi' \
   --data '{
 	"mode": "update_partner",
-		"params": {
-			"partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c",
-			"meta_data": {
-				"webhook": "https://www.travel.com/webhook"
-			}
+    "params": {
+        "partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c",
+        "meta_data": {
+        	"name": "Partner Name Google",
+        	"webhook": "https://travel.example.com/api_webhook"
+        }
 	}
 }'
 ```
-
+<!--
 ### Delete partner
 
 Delete a partner
@@ -143,11 +144,11 @@ Parameter |  Description |  Required?
 curl --request POST \
   --url https://partners-test-api.instalocate.com/v1/partners \
   --header 'Content-Type: application/json' \
-  --header 'x-api-key: i346dbQMao3Q6OfP9wMFr4DlkdAyniNu1atcUFGG' \
+  --header 'x-api-key: D61qO8qcoR4ArQvOCYtauSHQqU24qJv2TvQIBwPi' \
   --data '{
 	"mode": "delete_partner",
 		"params": {
 			"partner_id": "575a4ef4-9eef-4f51-ac9d-d44c9126da9c",
 	}
 }'
-```
+```-->
