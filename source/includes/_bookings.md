@@ -33,11 +33,11 @@ flights | An array of flights of a given booking. See below for the individual f
 
 Parameter |  Description |  Required?
 --------- | ----------- | -----------
-`airline_code` | Airline Code e.g. BA | Required
-`flight_number` | Flight number: 123, 123A (it can contain alphabets). | Required
+`airline_code` | IATA Airline Code e.g. BA | Required
+`flight_number` | Flight number: 123, 123A etc. (it can contain alphabets). If it is zero padded (e.g. 0123), zero will be removed | Required
 `departure_date` | Date of departure in YYYY-MM-DD format. Example: 2018-05-18 | Required
-`source_airport` | Source Airport Code (e.g. LHR) | Required
-`destination_airport` | Source Airport Code (e.g. JFK) | Required
+`source_airport` | IATA Source Airport Code (e.g. LHR) | Required
+`destination_airport` | IATA Source Airport Code (e.g. JFK) | Required
 `partner_flight_unique_id` | To uniquely identify a flight. This value will be passed back in the API response.  | Optional
 
 > Example for creating a new booking:
